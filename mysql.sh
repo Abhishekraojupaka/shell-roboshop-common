@@ -4,7 +4,7 @@ source ./common.sh
 
 check_root
 
-dnf remove mysql-server -y &>>$LOG_FILE
+dnf install mysql-server -y &>>$LOG_FILE
 VALIDATE $? "Installing MySQL server"
 systemctl enable mysqld &>>$LOG_FILE
 systemctl start mysqld  
