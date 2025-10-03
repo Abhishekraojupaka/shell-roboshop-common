@@ -64,6 +64,7 @@ app_setup(){
     id roboshop &>>$LOG_FILE
     if [ $? -ne 0 ]; then
         useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
+        VALIDATE $? "Creating system user"
     else
         echo -e "User already exist ... $Y SKIPPING $N"
     fi
@@ -101,5 +102,5 @@ app_restart(){
 print_total_time(){
     END_TIME=$(date +%s)
     TOTAL_TIME=$(( $END_TIME - $START_TIME))
-    echo -e "Script executed in : $Y $TOTAL_TIME seconds $N"
+    echo -e "Script executed in: $Y $TOTAL_TIME Seconds $N"
 }
